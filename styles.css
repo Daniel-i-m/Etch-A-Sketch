@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Eater&family=Rubik+80s+Fade&display=swap");
+
+:root {
+  --main-color: #faa;
+  --squares: 16; /*we will be changing this size in js,when new number selected*/
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+body {
+  background: var(--main-color);
+  position: relative;
+}
+.title {
+  position: absolute;
+  bottom: 0;
+  width: auto;
+  line-height: 40px;
+  color: #000;
+  padding: 5px;
+  font-family: "Rubik 80s fade", Eater, cursive;
+  font-size: 30px;
+  z-index: 10;
+  text-align: center;
+}
+.title span {
+  display: block;
+  font-size: 50px;
+}
+.title span:last-child {
+  font-family: eater, cursive;
+  transform: translate(10px, -20px) rotate(-13deg);
+}
+
+.container {
+  width: 1200px;
+  height: 700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.wrapper {
+  width: 620px;
+  height: 620px;
+  background: #fff;
+  display: grid;
+  grid-template-columns: repeat(var(--squares), 1fr);
+  grid-template-rows: repeat(var(--squares), 1fr);
+  cursor: crosshair;
+  box-shadow: 0 0 25px black;
+  overflow: hidden;
+}
+
+.btnWrapper {
+  height: 80%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn {
+  display: block;
+  color: #fff;
+  font-weight: 700;
+  background: rgba(89, 70, 70, 0.5);
+  width: 200px;
+  height: 50px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  box-shadow: inset 0 0 15px 2px black, 0 0 5px 0 black;
+  text-align: center;
+}
+.btn:hover {
+  transform: scale(1.1);
+  transition: 150ms ease-out;
+}
+
+.color-picker {
+  line-height: 50px;
+  color: whitesmoke;
+  font-size: 18px;
+  font-weight: bolder;
+  display: flex;
+  gap: 15px;
+}
+
+input[type="color"] {
+  /* -webkit-appearance: none; */
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-moz-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 27px;
+  width: 23px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background-color: #594646;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8), 0px 0px 1px #0d0d0d;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 21px;
+  width: 7px;
+  margin-top: -6px;
+  border-radius: 50px;
+  background-color: #594646;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8), 0px 0px 1px #0d0d0d;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100px;
+  height: 10px;
+  cursor: pointer;
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.8), inset 0px 0px 5px #0d0d0d;
+  background: #ddd;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.8), inset 0px 0px 5px #0d0d0d;
+  background: #ddd;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 480px;
+    height: 700px;
+    flex-direction: column;
+  }
+  .wrapper {
+    width: 460px;
+    height: 560px;
+  }
+  .btnWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
+    width: 100vw;
+    height: 20%;
+    text-align: center;
+    padding: 0 30px;
+  }
+  .btn {
+    width: 100px;
+  }
+  label {
+    display: none;
+  }
+  .color-picker {
+    line-height: 14px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .title {
+    right: 0;
+  }
+  .title span {
+    /* display: none; */
+    font-size: 16px;
+  }
+}
